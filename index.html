@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<audio id="musica" loop>
+  <source src="bajo el agua.mp3" type="audio/mpeg">
+</audio>
+
+
+  <div class="container">
+    <h1>Para ti 🌷</h1>
+
+    <div class="gallery">
+      <img src="foto1.jpg.jpg" alt="Foto de ella">
+      <img src="foto2.jpg.jpg" alt="Foto de ella">
+    </div>
+
+    <button id="btnMensaje">Lo que siento por ti 💌</button>
+    <p id="mensaje" class="oculto">
+Hoy… 7 de octubre, habría sido nuestro primer aniversario 💛
+Y aunque las cosas no salieron como imaginábamos, esta fecha sigue siendo muy importante para mí.
+Me acuerdo de cada momento, de todo lo que vivimos, y me duele haber fallado.
+Me arrepiento de haberte decepcionado, pero más aún, me duele saber que lastimé a alguien tan especial.
+
+Bayolet… quiero que sepas que te amo mucho, que eres mi nena, la persona que más me importa en este mundo. 💛
+Si pudiera verte solo un momento, te diría todo lo que te amo, todo lo que guardo aquí dentro.
+
+Así como nos gustan las carreras de autos, quiero que sepas que siempre te dedicaré mis triunfos,
+como ese domingo pasado, cuando me inspiré pensando en ti y corrí con el corazón puesto en nosotros. 🏎️
+
+Aunque la distancia nos separe, mi corazón siempre corre hacia ti,
+porque tú eres mi meta, mi razón, mi amor.
+
+Y pase lo que pase, quiero que recuerdes que siempre estaré aquí, apoyándote en cada sueño,
+en cada carrera, en cada meta que te propongas…
+
+Porque aunque el tiempo pase, mi corazón sigue corriendo detrás del tuyo,
+con la esperanza de que algún día podamos llegar a la meta juntos 🏁💛
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+  // Crear pétalos animados
+  const cantidad = 25; // cantidad de pétalos
+  for (let i = 0; i < cantidad; i++) {
+    let petalo = document.createElement('div');
+    petalo.classList.add('petalo');
+    petalo.style.left = Math.random() * 100 + 'vw';
+    petalo.style.animationDuration = 5 + Math.random() * 5 + 's';
+    petalo.style.opacity = Math.random();
+    petalo.style.width = petalo.style.height = 10 + Math.random() * 15 + 'px';
+    document.body.appendChild(petalo);
+  }
+</script>
+<script>
+  const musica = document.querySelector("audio");
+  document.addEventListener("click", () => {
+    musica.play();
+  }, { once: true });
+</script>
+
+</body>
+</html>
