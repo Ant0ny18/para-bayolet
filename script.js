@@ -1,26 +1,30 @@
-const btnMensaje = document.getElementById("btnMensaje");
+const boton = document.getElementById("btnMensaje");
 const mensaje = document.getElementById("mensaje");
-const musica = document.getElementById('musica');
-musica.play();
+const musica = document.getElementById("musica");
 
-btnMensaje.addEventListener("click", () => {
-  escribirTexto(mensaje);
+boton.addEventListener("click", async () => {
+  if (mensaje.classList.contains("oculto")) {
+    mensaje.classList.remove("oculto");
+    escribirTexto(mensaje);
+
+    try {
+      await musica.play(); // reproducir cuando hace clic
+    } catch (err) {
+      console.log("El navegador bloqueó el audio: ", err);
+    }
+  } else {
+    mensaje.classList.add("oculto");
+    musica.pause();
+  }
 });
 
 function escribirTexto(elemento) {
-  const texto = elemento.innerHTML;
-  elemento.innerHTML = ""; // Limpia el texto
-  elemento.classList.remove("oculto");
-
+  const texto = elemento.textContent;
+  elemento.textContent = "";
   let i = 0;
-  const velocidad = 45; // Velocidad de escritura (ms por letra)
-
-  function escribir() {
-    if (i < texto.length) {
-      elemento.innerHTML += texto.charAt(i);
-      i++;
-      setTimeout(escribir, velocidad);
-    }
-  }
-  escribir();
+  const intervalo = setInterval(() => {
+    elemento.textContent += texto[i];
+    i++;
+    if (i >= texto.length) clearInterval(intervalo);
+  }, 40);
 }
